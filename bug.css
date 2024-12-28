@@ -1,0 +1,17 @@
+The following CSS code snippet demonstrates an uncommon issue related to unexpected behavior of the `calc()` function with percentage values in a nested context:
+
+```css
+.container {
+  width: 50%;
+}
+
+.inner {
+  width: calc(100% - 10px);
+}
+
+.nested {
+  width: calc(100% - 20px);
+}
+```
+
+In this example, the `.inner` element correctly calculates its width based on the parent's width, subtracting 10 pixels. However, if `.nested` element is added inside `.inner`, its calculation becomes unexpected, even though the calculation is seemingly correct.  The issue arises when the percentage calculation in nested `calc()` functions is not correctly relative to the innermost element's containing block, potentially leading to unexpected results.
