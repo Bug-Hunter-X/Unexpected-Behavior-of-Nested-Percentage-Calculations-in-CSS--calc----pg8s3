@@ -1,0 +1,23 @@
+The solution involves avoiding nested percentage calculations within `calc()` if possible.  A more reliable approach is to calculate the values explicitly using pixel units or pre-calculate the sizes and apply them directly in the CSS. 
+
+Here's a corrected version of the CSS code:
+
+```css
+.container {
+  width: 50%;
+}
+
+.inner {
+  width: calc(100% - 10px);
+}
+
+.nested {
+  width: calc(100% - 20px); /* this calculation should be reliable now*/
+  /* Alternatively, you can use a simpler calculation if the context of 100% is not ambiguous:
+     width: 100%;
+     margin-left: 10px;
+     margin-right: 10px; */
+}
+```
+
+In this improved version, we ensure the context of the `100%` in the `.nested` calculation is clear, leading to the expected layout behavior.
